@@ -1,5 +1,7 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 @section('page')
+Orders Details
+
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -82,7 +84,13 @@
                                     <button class="btn btn-success" type="button"
                                             >Confirm</button></a>
                                         @endif
-                            </td>
+
+
+                                <a href="{{route('orders.details',$order->id)}}">
+                                    <button class="btn btn-info" type="button">
+                                        Details</button> </a>
+                                    </td>
+
                         </tr>
                         @endforeach
 

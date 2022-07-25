@@ -9,16 +9,23 @@ class OrderController extends Controller
 {
     public function index(){
         $order=Order::all();
-        return view('orders.index',compact('order'));
+        return view('admin.orders.index',compact('order'));
     }
     public function confirm($id){
         $order =Order::find($id);
         $order->update(['status'=>1]);
-        return redirect()->back()->with('message','order has been again into pending');
+        return redirect()->back()->with('message','Order has been confirm');
     }
     public function pending($id){
         $order =Order::find($id);
         $order->update(['status'=>0]);
-        return redirect()->back()->with('message','order has been confirm');
+        return redirect()->back()->with('message','Order has been again into pending');
     }
+
+    public function show($id)
+    {
+        $order = Order::find($id);
+        return view('admin.orders.details',compact('order'));
+    }
+
 }

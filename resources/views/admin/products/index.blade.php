@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 @section('page')
 View Product
 @endsection
@@ -21,16 +21,15 @@ View Product
                 </div>
                  @endif --}}
 
-                     @if(session()->has('message'))
+                 @if(session()->has('message'))
 
-                <div class="alert alert-success alert-dismissible" >
-                    <button type="button" class="close" data-dismiss="alert">
-                    &times;
-                    </button>
-                    <strong>{{ session()->get('message') }}</strong>
-                </div>
-
-                 @endif
+                 <div class="alert alert-success" >
+                     <strong>{{ session()->get('message') }}</strong>
+                     <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                         <span aria-hidden="true"> &times;</span>
+                     </button>
+                 </div>
+                  @endif
 
 
                 <div class="card">

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 @section('page')
 Details
 @endsection
@@ -40,12 +40,13 @@ Details
 
                         <tr>
                             <th>Created At</th>
-                            <td>{{ $product->created_at}}</td>
+                            <td>{{ $product->created_at->diffForHumans()}}</td>
+                            {{-- result will be shown is like 3hrs ago /5min ago --}}
                         </tr
 
                         <tr>
                             <th>Updated At</th>
-                            <td>{{$product->updated_at}}</td>
+                            <td>{{$product->updated_at->diffForHumans()}}</td>
                         </tr>
 
                         <tr>

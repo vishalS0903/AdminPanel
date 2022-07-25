@@ -8,7 +8,7 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function create(){
-        return view('products.create');
+        return view('admin.products.create');
     }
     public function store(Request $request){
         $request->validate([
@@ -32,15 +32,15 @@ class ProductController extends Controller
             $product->image=$filename;
         }
         $product-> save();
-        return redirect()->route('products.index')->with('message','data added successfully');
+        return redirect()->route('admin.products.index')->with('message','Data added successfully');
     }
     public function index(){
         $products = Product::all();
-        return view ('products.index',compact('products'));
+        return view ('admin.products.index',compact('products'));
     }
     public function edit($id){
         $product=Product::find($id);
-        return view('products.edit',compact('product'));
+        return view('admin.products.edit',compact('product'));
     }
     public function update( Request $request,$id){
         $request->validate([
@@ -63,18 +63,18 @@ class ProductController extends Controller
             $product->image=$filename;
         }
         $product-> save();
-        return redirect()->route('products.index')->with('message','data updated successfully');
+        return view('admin.products.edit',compact('product'));
 
      }
      public function delete($id){
         $product=Product::find($id);
          $product-> delete();
-         return redirect()->route('products.index')->with('message','data removed successfully');
+         return redirect()->route('products.index')->with('message','Data removed successfully');
 
 
      }
      public function details($id){
         $product=Product::find($id);
-        return view('products.details',compact('product'));
+        return view('admin.products.edit',compact('product'));
      }
 }

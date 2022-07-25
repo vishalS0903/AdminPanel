@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
+
+resources in route
 |
 */
 
@@ -49,5 +51,10 @@ Route::get('/products/details/{id}',[ProductController::class,'details'])->name(
 Route::get('/orders/index',[OrderController::class,'index'])->name('orders.index');
 Route::get('/orders/confirm/{id}',[OrderController::class,'confirm'])->name('orders.confirm');
 Route::get('/orders/pending/{id}',[OrderController::class,'pending'])->name('orders.pending');
+Route::get('/orders/details/{id}',[OrderController::class,'show'])->name('orders.details');
+
 
 Route::get('/users/index',[UserController::class,'index'])->name('users.index');
+Route::get('/users/details/{id}',[UserController::class,'details'])->name('users.details');
+// Route::get('/users/detail',[UserController::class,'details'])->name('users.details');
+// Route::view('/view','users.details');

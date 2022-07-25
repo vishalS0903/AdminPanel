@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 @section('page')
 Dashboard
 @endsection
@@ -17,14 +17,14 @@ Dashboard
                         <div class="col-xs-7">
                             <div class="numbers">
                                 <p>Total Visitors</p>
-                                11022
+                                <h5>11022</h5>
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <i class="ti-panel"></i> Details
+                            <a href=""><i class="ti-panel"></i> Details</a>
                         </div>
                     </div>
                 </div>
@@ -42,14 +42,17 @@ Dashboard
                         <div class="col-xs-7">
                             <div class="numbers">
                                 <p>Products</p>
-                                $1,345
+                                <?php
+                                $blog_count = App\Models\Product::count();
+                                ?>
+                                <h5>{{$blog_count}}</h5>
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <i class="ti-panel"></i> Details
+                           <a href="{{route('products.index')}}"> <i class="ti-panel"></i> Details</a>
                         </div>
                     </div>
                 </div>
@@ -67,14 +70,18 @@ Dashboard
                         <div class="col-xs-7">
                             <div class="numbers">
                                 <p>Orders</p>
-                                23
-                            </div>
+                                <?php
+                                $blog_count = App\Models\Order::count();
+                                ?>
+                                <h5>{{$blog_count}}
+                                </h5>
+                                </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <i class="ti-panel"></i> Details
+                            <a href="{{route('orders.index')}}"> <i class="ti-panel"></i> Details</a>
                         </div>
                     </div>
                 </div>
@@ -92,16 +99,17 @@ Dashboard
                         <div class="col-xs-7">
                             <div class="numbers">
                                 <p>Users</p>
-
-
-                                45
+                                <?php
+                                $blog_count = App\Models\User::count();
+                                ?>
+                                <h5> {{$blog_count}}</h5>
                             </div>
                         </div>
                     </div>
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <i class="ti-panel"></i> Details
+                            <a href="{{route('users.index')}}"> <i class="ti-panel"></i> Details</a>
                         </div>
                     </div>
                 </div>

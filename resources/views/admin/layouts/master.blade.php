@@ -33,7 +33,7 @@
 <body>
 
 <div class="wrapper">
-    @include('layouts.sidebar')
+    @include('admin.layouts.sidebar')
     {{-- <div class="sidebar" data-background-color="white" data-active-color="danger">
 
         <div class="sidebar-wrapper">
