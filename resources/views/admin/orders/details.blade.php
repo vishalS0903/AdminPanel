@@ -28,10 +28,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                            {{-- @php
+                            @php
                             $i = 1;
                           @endphp
-                          --}}
+
                          {{-- @foreach ($order as $order) --}}
                         <tr>
                             <td>{{@$order->id}}</td>
