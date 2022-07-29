@@ -32,7 +32,7 @@ class ProductController extends Controller
             $product->image=$filename;
         }
         $product-> save();
-        return redirect()->route('admin.products.index')->with('message','Data added successfully');
+        return redirect()->route('products.index')->with('message','Data added successfully');
     }
     public function index(){
         $products = Product::all();
@@ -63,7 +63,7 @@ class ProductController extends Controller
             $product->image=$filename;
         }
         $product-> save();
-        return view('admin.products.edit',compact('product'));
+        return redirect()->route('products.index')->with('message','Data updated successfully');
 
      }
      public function delete($id){
@@ -75,6 +75,6 @@ class ProductController extends Controller
      }
      public function details($id){
         $product=Product::find($id);
-        return view('admin.products.edit',compact('product'));
+        return view('admin.products.details',compact('product'));
      }
 }

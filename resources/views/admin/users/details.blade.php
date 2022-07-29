@@ -27,15 +27,15 @@ User Order Details
                         </thead>
                         <tbody>
    <tr>
-                            <td>{{$orders->id}}</td>
-                            <td>{{$orders->product[0]->name}}</td>
-                            <td>{{$orders->address}}</td>
-                            <td>{{$orders->OrderItems[0]->quantity}}</td>
-                            <td>{{$orders->OrderItems[0]->price}}</td>
-                            <td>{{$orders->date}}</td>
+                            <td>{{@$orders->id}}</td>
+                            <td>{{@$orders->product[0]->name}}</td>
+                            <td>{{@$orders->address}}</td>
+                            <td>{{@$orders->OrderItems[0]->quantity}}</td>
+                            <td>{{@$orders->OrderItems[0]->price}}</td>
+                            <td>{{@$orders->date}}</td>
 
                             <td>
-                                @if ($orders->status)
+                                @if (@$orders->status)
                                 <span class="label label-success">confirmed</span>
                                 @else
                                  <span class="label label-warning">pending</span>

@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\front\CartController;
+use App\Http\Controllers\front\HomeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,5 +58,15 @@ Route::get('/orders/details/{id}',[OrderController::class,'show'])->name('orders
 
 Route::get('/users/index',[UserController::class,'index'])->name('users.index');
 Route::get('/users/details/{id}',[UserController::class,'details'])->name('users.details');
+Route::get('/profile',[UserController::class,'profile'])->name('profile');
+Route::post('/profile/admin/update',[UserController::class,'profile_update'])->name('profile.update');
+
 // Route::get('/users/detail',[UserController::class,'details'])->name('users.details');
+
 });
+
+
+Route::get('/',[HomeController::class,'index'])->name('front.index');
+
+//cart
+Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');
