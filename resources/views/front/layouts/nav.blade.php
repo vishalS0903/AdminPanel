@@ -17,8 +17,8 @@
                         <i class="fa fa-user"></i> Account
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-                        <a class="dropdown-item " href="">Sign In</a>
-                        <a class="dropdown-item" href="">Sign Up</a>
+                        <a class="dropdown-item " href="{{route('login')}}">Log In</a>
+                        <a class="dropdown-item" href="">Register</a>
                     </div>
                 </li>
             </ul>
