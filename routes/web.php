@@ -6,7 +6,9 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\front\CartController;
 use App\Http\Controllers\front\HomeController;
-
+use App\Http\Controllers\front\RegisterController;
+use App\Http\Controllers\front\LoginController;
+use App\Http\Controllers\front\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +21,9 @@ use App\Http\Controllers\front\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -70,3 +72,17 @@ Route::get('/',[HomeController::class,'index'])->name('front.index');
 
 //cart
 Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');
+// Route::view('/user/register','front.register');
+Route::get('/user/register',[RegisterController::class,'show'])->name('user.register');
+Route::post('/user/register/store',[RegisterController::class,'store'])->name('user.store');
+
+
+Route::get('/user/login',[LoginController::class,'show'])->name('user.login');
+Route::post('/user/login/store',[LoginController::class,'store'])->name('login.store');
+Route::get('/user/logout',[LoginController::class,'logout'])->name('user.logout');
+Route::get('/user/profile/index',[UserProfileController::class,'index'])->name('profile.index');
+Route::get('/user/profile/details',[UserProfileController::class,'show'])->name('profile.details');
+
+
+
+

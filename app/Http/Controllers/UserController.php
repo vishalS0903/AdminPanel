@@ -28,6 +28,7 @@ class UserController extends Controller
             'name' => 'nullable',
             'email' => 'nullable',
             'password' => 'nullable',
+
         ]);
         $id=Auth::user()->id;
         $user=User::find($id);
@@ -37,4 +38,5 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('users.index');
     }
+
 }
