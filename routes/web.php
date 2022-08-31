@@ -85,4 +85,7 @@ Route::get('/user/profile/details',[UserProfileController::class,'show'])->name(
 
 
 
+Route::get('/user/profile/edit/{id}',[UserProfileController::class,'edit'])->name('profile.edit');
+Route::post('/user/profile/update/{id}',[UserProfileController::class,'update'])->name('profile.update');
 
+Route::get('/user/order/{id}',[UserProfileController::class,'details'])->name('profile.details');

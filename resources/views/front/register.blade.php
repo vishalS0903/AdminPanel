@@ -44,10 +44,14 @@
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="Password" name="password" placeholder="Password" id="password" class="form-control">
+                            <span class="text-danger">{{$errors->has('password') ? $errors->first('password') : ''}}</span>
+
                         </div>
                         <div class="form-group">
                             <label for="password_confirmation"> Confirm Password:</label>
                             <input type="Password" name="password_confirmation" placeholder="Confirm password" id="password_confirmation" class="form-control">
+                            <span class="text-danger">{{$errors->has('password_confirmation') ? $errors->first('password_confirmation') : ''}}</span>
+
                         </div>
 
 

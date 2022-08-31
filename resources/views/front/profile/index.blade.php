@@ -1,14 +1,17 @@
 @extends('front.layouts.master')
 @section('content')
+    <body>
+
+
     <h2>Profile</h2>
     <hr>
     <h3>User Details</h3>
 
-    
+
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th colspan="2">User Details <a href="" class="pullright">
+                <th colspan="2">User Details <a href="{{route('profile.edit',$user->id)}}" class="pullright">
                         <i class="fa fa-cogs">Edit Profile</i></a>
                 </th>
             <tr>
@@ -52,7 +55,7 @@
             @foreach ($user->order as $order)
                     <td>{{ $order->id }}</td>
                     <td>
-                        @foreach ($order->products as $item)
+                        @foreach ($order->product as $item)
                             <table class="table">
                                 <tr>
                                     <td>{{ $item->name }}</td>
@@ -116,4 +119,5 @@
                         @endforeach --}}
         </tbody>
     </table>
+</body>
 @endsection
