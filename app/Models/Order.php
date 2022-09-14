@@ -13,7 +13,7 @@ class Order extends Model
    public function user(){
     return $this->belongsTo(User::class);
    }
-   public function OrderItems(){
+   public function OrderItems(){ 
     return $this->hasMany( OrderItems::class);
    }
 

@@ -1,5 +1,15 @@
 @extends('front.layouts.master')
 @section('content')
+{{-- <br>
+@if(session()->has('msg'))
+
+<div class="alert alert-success" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+         &times;
+    </button>
+    {{session()->get('msg')}}
+</div>
+ @endif --}}
 <div class="container">
 
     <!-- Jumbotron Header -->
@@ -25,15 +35,17 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <strong>${{$product->price}}</strong> &nbsp;
-                    <a href="" class="btn btn-primary btn-outline-dark"><i class="fa fa-cart-plus "></i> Add To
-                        Cart</a>
+                    <strong>&#8377;{{$product->price}}</strong> &nbsp;
+                    {{-- <a href="" class="btn btn-primary btn-outline-dark"><i class="fa fa-cart-plus "></i> Add To
+                        Cart</a> --}}
                 </div>
-                <form action="">
+                <form action="{{route('cart.store')}}" method="POST">
                     @csrf
                     <input type="hidden" name="id" value="{{$product->id}}">
                     <input type="hidden" name="name" value="{{$product->name}}">
                     <input type="hidden" name="price" value="{{$product->price}}">
+                    <button type="submit" class="btn btn-primary btn-outline-dark"><i class="fa fa-cart-plus "></i> Add To
+                        Cart</button>
                 </form>
             </div>
         </div>

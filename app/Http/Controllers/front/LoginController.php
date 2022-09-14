@@ -28,13 +28,11 @@ class LoginController extends Controller
     }
     public function logout(){
         auth()->logout();
-        redirect()->route('user.login')->with('msg','You have been logged out successfully');
+       return redirect()->route('front.index')->with('msg','You have been logged out successfully');
 
     }
 
-    // public function index(){
-    //     return view('front.profile.index');
-    // }
+
 
 
 

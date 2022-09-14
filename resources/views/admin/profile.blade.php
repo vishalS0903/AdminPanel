@@ -12,7 +12,7 @@ profile
                         <h4 class="title">profile</h4>
                     </div>
                     <div class="content">
-                        <form action="{{route('profile.update')}}" method="post">
+                        <form action="{{route('profile.update',$user->id)}}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -39,7 +39,7 @@ profile
                                 </div>
 
                             </div>
-                            <div class="">
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-info btn-fill btn-wd">Update profile</button>
                             </div>
                             <div class="clearfix"></div>

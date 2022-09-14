@@ -71,7 +71,7 @@ Route::post('/profile/admin/update',[UserController::class,'profile_update'])->n
 Route::get('/',[HomeController::class,'index'])->name('front.index');
 
 //cart
-Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');
+// Route::get('/cart/index',[CartController::class,'index'])->name('cart.index');
 // Route::view('/user/register','front.register');
 Route::get('/user/register',[RegisterController::class,'show'])->name('user.register');
 Route::post('/user/register/store',[RegisterController::class,'store'])->name('user.store');
@@ -89,3 +89,13 @@ Route::get('/user/profile/edit/{id}',[UserProfileController::class,'edit'])->nam
 Route::post('/user/profile/update/{id}',[UserProfileController::class,'update'])->name('profile.update');
 
 Route::get('/user/order/{id}',[UserProfileController::class,'details'])->name('profile.details');
+
+
+// cart
+
+Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+Route::post('cart/store',[CartController::class,'store'])->name('cart.store');
+
+Route::get('cart/empty',[CartController::class,'empty'])->name('cart.empty');
+
+// Route::get('/cart/fetchdata',[CartController::class,'fetchdata'])->name('cart.fetchdata');

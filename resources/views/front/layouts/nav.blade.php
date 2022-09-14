@@ -8,12 +8,12 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/cart/index"><i class="fa fa-shopping-cart"></i> Cart
-                        {{--  @if (Cart::instance('default')->count() > 0)
+                    <a class="nav-link" href="/cart"><i class="fa fa-shopping-cart"></i> Cart
+                         @if (Cart::instance('default')->count() > 0)
                             <strong>
                                 ({{ Cart::instance('default')->count() }})
                             </strong>
-                        @endif  --}}
+                        @endif
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -36,7 +36,4 @@
         </div>
     </div>
 </nav>
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
+
