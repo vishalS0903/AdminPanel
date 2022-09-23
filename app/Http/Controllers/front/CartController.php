@@ -21,9 +21,19 @@ class CartController extends Controller
         return redirect()->back()->with('msg','Item has been added to car');
     }
 
+    // update
+    public function update(Request $request,$id){
+        Cart::update($id,$request->qty ); // Will update the quantity
+        return redirect()->back()->with('msg','Item quantity has been added successfully!');
+    }
+
     public function empty()
     {
         Cart::destroy();
+    }
+    public function remove($id){
+        Cart::remove($id);
+        return redirect()->back()->with('msg', 'Item has been removed from cart !');
     }
 
 }

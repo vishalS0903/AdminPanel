@@ -95,7 +95,8 @@ Route::get('/user/order/{id}',[UserProfileController::class,'details'])->name('p
 
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
 Route::post('cart/store',[CartController::class,'store'])->name('cart.store');
+Route::patch('/cart/update/{id}',[CartController::class,'update'])->name('cart.update');
 
 Route::get('cart/empty',[CartController::class,'empty'])->name('cart.empty');
+Route::delete('cart/romove/{id}',[CartController::class,'remove'])->name('cart.remove');
 
-// Route::get('/cart/fetchdata',[CartController::class,'fetchdata'])->name('cart.fetchdata');

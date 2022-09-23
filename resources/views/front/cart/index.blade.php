@@ -4,16 +4,31 @@
 
     <h2 class="mt-5"><i class="fa fa-shopping-cart"></i> Shooping Cart</h2>
     <hr>
-
-    <h4 class="mt-5">
-                 {{Cart::instance('default')->count()}}
- items(s) in Shopping Cart</h4>
-
+    @if (Cart::instance('default')->count() > 0)
+    <h4 class="mt-5">{{Cart::instance()->count()}} items(s) in Shopping Cart</h4>
     <div class="cart-items">
 
         <div class="row">
 
+
             <div class="col-md-12">
+                @if (session()->has('msg'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{ session()->get('msg') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
+                    @if (session()->has('errors'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{ session()->get('errors') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
 
                 <table class="table">
 
@@ -36,8 +51,14 @@
                             </td>
 
                             <td>
+{{--
+                                <a href="{{route('cart.remove')}}">Remove</a><br> --}}
 
-                                <a href="">Remove</a><br>
+                                <form action={{ route('cart.remove', $item->rowId) }} method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-link btn-large">Remove</button><br>
+                                </form>
                                 <a href="">Save for later</a>
 
                             </td>
@@ -52,7 +73,7 @@
                                 </select>
                             </td>
 
-                            <td>{{$item->price}}</td>
+                            <td>{{$item->total}}</td>
                         </tr>
                         @endforeach
 
@@ -94,6 +115,10 @@
                 <hr>
 
                 </div>
+                @else
+                <h1> There Is no Item in Cart !</h1>
+                <a href="/"class="btn btn-outline-dark">Continue Shopping</a>
+    @endif
 
                 <div class="col-md-12">
 
@@ -168,6 +193,7 @@
                                 </select>
                             </td>
 
+
                             <td>$233</td>
                         </tr>
 
@@ -181,4 +207,25 @@
 
             </div>
         </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+        <script>
+            const className = document.querySelectorAll('.qty');
+            Array.from(className).forEach(function(el) {
+                el.addEventListener('change', function() {
+                    const id = el.getAttribute('data-id');
+                    axios.patch(`/cart/update/${id}`, {
+                            qty : this.value
+                        })
+                        .then(function(response) {
+                            location.reload();
+                        })
+                        .catch(function(error) {
+                            location.reload();
+                        });
+                    console.log(id);
+                })
+            })
+        </script>
 @endsection
