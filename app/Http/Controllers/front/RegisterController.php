@@ -9,7 +9,7 @@ use App\Models\User;
 class RegisterController extends Controller
 {
     public function show(){
-        return view('front.register');
+        return view('Front.register');
     }
     public function store(Request $request){
         $request->validate([

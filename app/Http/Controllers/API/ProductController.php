@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function create(){
-        return view('admin.products.create');
+    public function index(){
+        $products = Product::all();
+        return $products;
     }
     public function store(Request $request){
         $request->validate([
@@ -32,15 +34,7 @@ class ProductController extends Controller
             $product->image=$filename;
         }
         $product-> save();
-        return redirect()->route('products.index')->with('message','Data added successfully');
-    }
-    public function index(){
-        $products = Product::all();
-        return view ('admin.products.index',compact('products'));
-    }
-    public function edit($id){
-        $product=Product::find($id);
-        return view('admin.products.edit',compact('product'));
+        return $product;
     }
     public function update( Request $request,$id){
         $request->validate([
@@ -63,7 +57,7 @@ class ProductController extends Controller
             $product->image=$filename;
         }
         $product-> save();
-        return redirect()->route('products.index')->with('message','Data updated successfully');
+        return $product;
 
      }
      public function delete($id){

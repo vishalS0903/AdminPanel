@@ -59,7 +59,7 @@
                                     @method('delete')
                                     <button class="btn btn-link btn-large">Remove</button><br>
                                 </form>
-                                <a href="">Save for later</a>
+                                <a href="{{route('cart.saveForLater', $item->rowId)}}">Save for later</a>
 
                             </td>
 
@@ -122,22 +122,28 @@
 
                 <div class="col-md-12">
 
-                <h4>2 items Save for Later</h4>
+                <h4>{{ Cart::instance('saveForLater')->count() }} items Save for Later</h4>
                 <table class="table">
 
                     <tbody>
+                        @foreach (Cart::instance('saveForLater')->content() as $item)
 
                         <tr>
-                            <td><img src="{{asset('images/12.jpg')}}" style="width: 5em"></td>
+                            @php
+                            $description = App\Models\product::find($item->id);
+                        @endphp
+                            <td><img src="{{asset('uploads' . '/' . $description->image) }}" style="width: 5em"></td>
                             <td>
-                                <strong>Mac</strong><br> This is some text for the product
+                                <strong>{{$description->name}}</strong><br> {{$description->description}}
                             </td>
 
                             <td>
-
-                                <a href="">Remove</a><br>
-                                <a href="">Save for later</a>
-
+                                <form action={{ route('cart.saveForLaterDestroy', $item->rowId) }} method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-link btn-large">Remove</button><br>
+                                </form>
+                                <a href="{{ route('cart.moveToCart', $item->rowId) }}">Move to Cart</a>
                             </td>
 
                             <td>
@@ -150,7 +156,7 @@
                             <td>$233</td>
                         </tr>
 
-                        <tr>
+                        {{-- <tr>
                             <td><img src="{{asset('images/01.jpg')}}" style="width: 5em"></td>
                             <td>
                                 <strong>Laptop</strong><br> This is some text for the product
@@ -195,8 +201,8 @@
 
 
                             <td>$233</td>
-                        </tr>
-
+                        </tr> --}}
+                        @endforeach
                     </tbody>
 
                 </table>

@@ -25,6 +25,8 @@ use App\Http\Controllers\front\UserProfileController;
 //     return view('welcome');
 // });
 
+
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -61,7 +63,8 @@ Route::get('/orders/details/{id}',[OrderController::class,'show'])->name('orders
 Route::get('/users/index',[UserController::class,'index'])->name('users.index');
 Route::get('/users/details/{id}',[UserController::class,'details'])->name('users.details');
 Route::get('/profile',[UserController::class,'profile'])->name('profile');
-Route::post('/profile/admin/update',[UserController::class,'profile_update'])->name('profile.update');
+Route::post('/admin/profile
+/update',[UserController::class,'profile_update'])->name('profile.update');
 
 // Route::get('/users/detail',[UserController::class,'details'])->name('users.details');
 
@@ -99,4 +102,10 @@ Route::patch('/cart/update/{id}',[CartController::class,'update'])->name('cart.u
 
 Route::get('cart/empty',[CartController::class,'empty'])->name('cart.empty');
 Route::delete('cart/romove/{id}',[CartController::class,'remove'])->name('cart.remove');
+
+// saveforlater
+Route::get('/cart/saveForLater/{id}', [CartController::class, 'saveForLater'])->name('cart.saveForLater');
+
+Route::delete('/saveForLater/destroy/{id}', [CartController::class, 'saveForLaterDestroy'])->name('cart.saveForLaterDestroy');
+Route::get('/cart/moveToCart/{id}', [CartController::class, 'moveToCart'])->name('cart.moveToCart');
 

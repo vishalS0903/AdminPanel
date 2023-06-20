@@ -10,7 +10,7 @@ class OrderController extends Controller
     public function index(){
         $order=Order::all();
         // dd($order);
-        
+
         return view('admin.orders.index',compact('order'));
     }
     public function confirm($id){

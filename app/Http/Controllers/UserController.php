@@ -24,6 +24,7 @@ class UserController extends Controller
         return view('admin.profile',compact('user'));
     }
     public function profile_update(Request $request){
+      
         $request->validate([
             'name' => 'nullable',
             'email' => 'nullable',
@@ -35,8 +36,10 @@ class UserController extends Controller
         $user->name=$request->name;
         $user->email=$request->email;
         $user->password=bcrypt($request->password);
+
         $user->save();
-        return redirect()->route('users.index');
+
+        // return redirect()->route('users.index');
     }
 
 }

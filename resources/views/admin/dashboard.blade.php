@@ -4,7 +4,10 @@ Dashboard
 @endsection
 @section('content')
 <div class="container-fluid">
-    <div class="row">
+    <div class="row">-
+
+
+
         <div class="col-lg-3 col-sm-6">
             <div class="card">
                 <div class="content">

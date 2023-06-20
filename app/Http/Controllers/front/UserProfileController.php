@@ -13,6 +13,7 @@ class UserProfileController extends Controller
         $id = auth ()->user()->id;
         $user = User::find($id);
         $orders = Order::where('user_id',$id)->get();
+        // dd($orders);
         return view('front.profile.index',compact(['user','orders']));
     }
 
